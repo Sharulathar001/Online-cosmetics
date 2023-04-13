@@ -1,0 +1,23 @@
+body, html {
+  height: 100%;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+body {
+  /* The image used */
+  background-image: url("C:\Users\HP\home.webp");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+input::placeholder {
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+}
+

@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+     <div *ngFor="let item of ProductList">
+          <div class="card col-md-4">
+            <img src="{{item.thumbnail}}">
+            <p> <b><a routerLink="/product/{{item.title}}">{{item.title}}</a></b> - {{item.price|currency:'INR'}}</p>
+          
+            <a routerLink="./EditProduct.component.html">Edit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+
+

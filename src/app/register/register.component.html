@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <STYle>
+        form{
+           border: 2px solid black;
+           padding: 10px;
+          width: 400px;
+          margin: 25px;
+          margin-left: 490px;
+          border-radius: 10px;
+          box-shadow: 2px 5px 5px  black;
+        }
+        label{
+          display: flex;
+         color: black;
+         font-family: 'Times New Roman', Times, serif;
+         font-weight: 700;
+         font-size: large;
+        }
+        input{
+          width: 100%;
+          border-radius: 8px;
+          padding: 5px;
+        }
+        .form-group{
+          padding: 5px;
+        }
+        button{
+          margin-left:150px;
+          margin-bottom: 10px;
+          font-family: 'Times New Roman', Times, serif;
+         font-weight: 700;
+         font-size: large;
+         border-radius: 10px;
+        }
+  </STYle>
+</head>
+<body>
+  <form #registerForm="ngForm" (submit)="submitForm()">
+    <h4 style="font-family: 'Times New Roman', Times, serif;text-align: center;padding: 5px;font-weight: 600;">Register Form</h4>
+    <!-- {{registerForm.value|json}} -->
+    <!-- -------------------USERNAME----------------------------------------------------------- -->
+    <div class="form-group">
+      <!-- <label for="">UserName: </label> -->
+      <input type="text" name="userName" [(ngModel)]="userName" placeholder="UserName" #uname="ngModel" minlength="3" required />
+    </div>
+
+    <div *ngIf="uname.errors && (uname.dirty || uname.touched)" style="color: red;">
+     <div [hidden]="!uname.errors['required']">
+       username is required
+     </div>
+     <div [hidden]="!uname.errors['minlength']">
+      please enter valid user name
+     </div>
+    </div>
+    <!-- ----------------------------EMAIL ID----------------------------------------------------------- -->
+    <!-- -------------------USERNAME----------------------------------------------------------- -->
+    <div class="form-group">
+      <!-- <label for="">Password: </label> -->
+      <input type="text" name="password" [(ngModel)]="password" #pass="ngModel" placeholder="Password" minlength="8" required />
+    </div>
+
+    <div *ngIf="pass.errors && (pass.dirty || pass.touched)" style="color: red;">
+     <div [hidden]="!pass.errors['required']">
+       Password is required
+     </div>
+     <div [hidden]="!pass.errors['minlength']">
+      please enter password with atleast 8 character
+     </div>
+    </div>
+
+    <!-- <div class="form-group"> -->
+      <!-- <label for="">Password: </label> -->
+      <!-- <input type="text" name="cpassword" [(ngModel)]="confirmPassword" #cpass="ngModel" placeholder="Confirm Password" minlength="8" required />
+    </div>
+
+    <div *ngIf="cpass.errors && (cpass.dirty || cpass.touched)" style="color: red;">
+     <div [hidden]="!cpass.errors['required']">
+       Confirm Password is required
+     </div>
+     <div [hidden]="!cpass.errors['minlength']">
+      Password do not match
+     </div>
+    </div> -->
+    <!-- ----------------------------EMAIL ID----------------------------------------------------------- -->
+
+    <div class="form-group">
+      <!-- <label for="email">Email</label> -->
+      <input type="email" name="email" [(ngModel)]="email"  #eml="ngModel"  placeholder="Email Address" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required/>
+    </div>
+
+    <div *ngIf="eml.errors && (eml.dirty || eml.touched)" style="color: red;">
+      <div [hidden]="!eml.errors['required']">
+        Email is required
+      </div>
+      <div [hidden]="!eml.errors['pattern']">
+        Email is not valid
+      </div>
+    </div>
+
+<!-- --------------------------MOBILE NUMBER------------------------------------------------------------- -->
+    <div class="form-group">
+      <!-- <label for="mobile">Mobile</label> -->
+      <input type="number" name="mobile" [(ngModel)]="mobile"  #mob="ngModel" placeholder="Mobile Number"  pattern="^[6-9]\d{0,9}"  required/>
+    </div>
+    <div *ngIf="mob.errors && (mob.dirty || mob.touched)" style="color: red;">
+     <div [hidden]="!mob.errors['required']">
+       Mobile number  is required
+     </div>
+     <div [hidden]="!mob.errors['pattern']">
+      Mobile number is not valid
+     </div>
+     </div>
+    <!-- ---------------------------SUBMIT BUTTON------------------------------------------------------------ -->
+
+    <button [disabled]="!registerForm.valid">Submit</button>
+    </form>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+   <STYle>
+    form{
+       border: 2px solid black;
+       /* padding: 10px; */
+      width: 400px;
+      margin: 25px;
+      margin-left: 490px;
+      border-radius: 10px;
+      box-shadow: 2px 5px 5px  black;
+    }
+    label{
+      display: flex;
+      padding: 10px;
+     color: black;
+     font-family: 'Times New Roman', Times, serif;
+     font-weight: 700;
+     font-size: large;
+    }
+    input{
+      width: 95%;
+      border-radius: 8px;
+      padding: 5px;
+      margin-top: 30px;
+    }
+    .form-group{
+      padding: 5px;
+    }
+    button{
+      margin-left:150px;
+      margin-bottom: 10px;
+      margin-top: 30px;
+      padding:7px;
+      font-family: 'Times New Roman', Times, serif;
+     font-weight: 700;
+     font-size: large;
+     border-radius: 10px;
+    }
+</STYle>
+</head>
+<body>
+  <form action="" [formGroup]="loginForm1">
+    <h4 style="font-family: 'Times New Roman', Times, serif;text-align: center;padding: 5px;font-weight: 600; margin-top: 7px;">Login</h4>
+    <!-- -------------------------------------USER NAME----------------------------------------------------------------- -->
+    <div class="form-check">
+      <!-- <label class="form-check-label">User Name</label> -->
+      <input type="text" name="username" formControlName="username" placeholder="UserName"/>
+    </div>
+    <div *ngIf="loginForm1.controls['username'].invalid && loginForm1.controls['username'].touched"  style="color:red;margin-left: 20px;">
+      <small *ngIf="loginForm1.controls['username'].errors?.['required']">
+          Username is required
+      </small>
+      <small *ngIf="loginForm1.controls['username'].errors?.['minlength']"  >
+         Please enter username with atleast 3 character
+      </small>
+    </div>
+    <!-- -------------------------------------PASSWORD---------------------------------------------------------------- -->
+
+    <div class="form-check">
+      <!-- <label class="form-check-label">Password</label> -->
+      <input type="password" name="password" formControlName="password" placeholder="Password" >
+    </div>
+
+
+    <div *ngIf="loginForm1.controls['password'].invalid &&loginForm1.controls['password'].touched"  style="color:red;margin-left: 20px;">
+      <small *ngIf="loginForm1.controls['password'].errors?.['required']">
+          password is required
+      </small>
+      <small [hidden]="!loginForm1.controls['password'].errors?.['minlength']"  >
+        Please enter password with atleast 8 character
+      </small>
+    </div>
+
+
+    <!-- ------------------------------------CONFIRM PASSWORD---------------------------------------------------------------- -->
+
+    <!-- <div class="form-check"> -->
+      <!-- <label class="form-check-label">Confrim Password</label> -->
+      <!-- <input type="password" name="cpassword" formControlName="cpassword" placeholder="Confrim Password">
+    </div>
+
+    <div *ngIf="loginForm1.controls['cpassword'].invalid && loginForm1.controls['cpassword'].touched" style="color:red; margin-left: 20px;">
+      <small *ngIf="loginForm1.controls['cpassword'].errors?.['required']">
+        Password is required
+      </small>
+      <small *ngIf="loginForm1.controls['cpassword'].errors?.['conformValidator']">
+        Password does not match
+      </small>
+    </div> -->
+    <!-- ----------------------------EMAIL ID----------------------------------------------------------- -->
+
+    <!-- <div class="form-group"> -->
+      <!-- <label for="email">Email</label> -->
+      <!-- <input type="email" name="email"   formControlName="email"  placeholder="Email Address" required/>
+    </div>
+
+    <div *ngIf="loginForm1.controls['email'].invalid && loginForm1.controls['email'].touched" style="color:red; margin-left: 20px;">
+      <small *ngIf="loginForm1.controls['email'].errors?.['required']">
+        Password is required
+      </small>
+      <small *ngIf="loginForm1.controls['email'].errors?.['pattern']">
+        Password does not match
+      </small>
+    </div> -->
+
+<!-- --------------------------MOBILE NUMBER------------------------------------------------------------- -->
+    <!-- <div class="form-group"> -->
+      <!-- <label for="mobile">Mobile</label> -->
+      <!-- <input type="number" name="mobile"  formControlName="mobile" placeholder="Mobile Number"   required/>
+    </div>
+    <div *ngIf="loginForm1.controls['mobile'].invalid && loginForm1.controls['mobile'].touched" style="color:red; margin-left: 20px;">
+      <small *ngIf="loginForm1.controls['mobile'].errors?.['required']">
+        Mobile number is required
+      </small>
+      <small *ngIf="loginForm1.controls['mobile'].errors?.['pattern']">
+        Incorrect mobile number
+      </small>
+</div> -->
+      <!-- -------------------------------------SUBMIT BUTTON----------------------------------------------------------------- -->
+    <div>
+      <button [disabled]="!loginForm1.valid" (click)="onLogin()">SignIn</button>
+    </div>
+  </form>
+
+</body>
+</html>
